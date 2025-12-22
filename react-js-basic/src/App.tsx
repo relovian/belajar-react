@@ -1,33 +1,87 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import ProfilCard from './profilCard.tsx'
+import MapelCard from './MapelCard.tsx'
+
+type Student = {
+    name: string;
+    kelas: string;
+    umur: number;
+}
+
+type Mapel = {
+  mapel: string;
+  guru: string;
+  jamMapel: number;
+}
+
+const students: Student[] = [
+  {
+    name: "farel",
+    kelas: "XI RPL 2",
+    umur: 18
+  },
+  {
+    name: "Relovian",
+    kelas: "XI RPL 2",
+    umur: 17
+  },
+  {
+    name: "irfan",
+    kelas: "XI RPL 2",
+    umur: 15
+  },
+  {
+    name: "vito",
+    kelas: "XI RPL 2",
+    umur: 15
+  },
+  {
+    name: "dimas",
+    kelas: "XI RPL 2",
+    umur: 15
+  }
+];
+
+const mapels: Mapel[] = [
+  {
+    mapel : "matematika",
+    guru : "bu nuning",
+    jamMapel : 3
+  },
+  {
+    mapel : "PAI",
+    guru : "pak agung",
+    jamMapel : 4
+  },
+  {
+    mapel : "bhs jepang",
+    guru : "bu rini",
+    jamMapel : 5
+  },
+  {
+    mapel : "bhs indonesia",
+    guru : "bu emi",
+    jamMapel : 2
+  }
+]
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>hallo world</h1>
+
+      {
+        students.map((student) => {
+          return <ProfilCard name={student.name} kelas={student.kelas} umur={student.umur}/>
+        })
+      }
+
+      {
+        mapels.map((jadwalGuru) => {
+          return <MapelCard mapel={jadwalGuru.mapel} guru={jadwalGuru.guru} jamMapel={jadwalGuru.jamMapel} />
+        })
+      }
+
+    
     </>
   )
 }
