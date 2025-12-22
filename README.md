@@ -1,2 +1,2 @@
 # belajar-react
-mempelajari react js yaitu props component dan lain lain
+proses saya dalam mempelajari react js plus typescript
