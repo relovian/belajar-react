@@ -1,5 +1,6 @@
 import ProfilCard from './profilCard.tsx'
 import MapelCard from './MapelCard.tsx'
+import Counter from './Counter.tsx'
 
 type Student = {
     name: string;
@@ -82,6 +83,7 @@ function App() {
       }
 
     
+      <Counter />
     </>
   )
 }
