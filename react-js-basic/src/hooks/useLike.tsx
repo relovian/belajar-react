@@ -2,47 +2,43 @@ import { useState } from "react"
 
 export const useLike = () => {
     const [like, setLike] = useState(0)
-    const [dislike, setDislike] = useState(0)
 
-    const [imgLike, setImgLike] = useState("src/assets/like.png")
-    const [imgDislike, setImgDislike] = useState("src/assets/dislike.png")
-    const [statusLike, setStatusLike] = useState("nonaktif")
-    const [statusDislike, setStatusDislike] = useState("nonaktif")
+    const [imgLike, setImgLike] = useState("src/assets/heart.png")
+    const [imgSave, setImgSave] = useState("src/assets/save.png")
+    const [statusLike, setStatusLike] = useState("")
+    const [statusSave, setStatusSave] = useState("")
+    // const [statusDislike, setStatusDislike] = useState("")
 
     const handleLike = () => {
 
-        if (statusLike == "nonaktif") {
+        if (statusLike == "") {
             setStatusLike("like")
-            setImgLike("src/assets/likeActive.png")
+            setImgLike("src/assets/heartActive.png")
             setLike( like + 1 )
-        } else {
-            setStatusLike("nonaktif")
-            setImgLike("src/assets/like.png")
+        } else if( statusLike == "like") {
+            setStatusLike("")
+            setImgLike("src/assets/heart.png")
             setLike( like - 1 )
         }
-    }
+    } 
     
-    const handleDislike = () => {
+    const handleSave = () => {
 
-        if (statusDislike == "nonaktif") {
-            setStatusDislike("dislike")
-            setImgDislike("src/assets/dislikeActive.png")
-            setDislike( dislike + 1 )
+        if (statusSave == "") {
+            setStatusSave("aktif")
+            setImgSave("src/assets/saveActive.png")
         } else {
-            setStatusDislike("nonaktif")
-            setImgDislike("src/assets/dislike.png")
-            setDislike( dislike - 1 )
+            setStatusSave("")
+            setImgSave("src/assets/save.png")
         }
     }
     
     
     return {
         like,
-        dislike,
         imgLike,
-        imgDislike,
-        status,
+        imgSave,
+        handleSave,
         handleLike,
-        handleDislike,
     }
 }
