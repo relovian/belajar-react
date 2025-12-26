@@ -3,8 +3,9 @@ import { Routes, Route } from 'react-router'
 import Home from './page/home'
 import NotFound from './page/NotFound'
 import Terms from './page/terms'
-import ProductList from './page/productList'
+import ProductList from './page/ProductList'
 import DetailProduct from './page/DetailProduct'
+import FormInput from './page/FormInput'
 
 const AppInstagram = () => {
     return (
@@ -14,7 +15,7 @@ const AppInstagram = () => {
                 <Route path="/ProductList" element={<ProductList />} />
                 <Route path="/DetailProduct/:namaProduk/:hargaProduk/:detailProduk" element={<DetailProduct />} />
                 <Route path="/terms/:terms1" element={<Terms />} />
-                <Route path="/" element={<Home />} />
+                <Route path="/FormInput" element={<FormInput />} />
                 <Route path="*" element={<NotFound />}/>
                 
            </Routes>

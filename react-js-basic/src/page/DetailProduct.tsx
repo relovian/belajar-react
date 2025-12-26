@@ -1,7 +1,9 @@
-import { useSearchParams } from 'react-router'
-import { params } from 'react-router'
+// import { useParams, useSearchParams } from 'react-router'
+import { useParams } from 'react-router'
 
-const DetailProduk = (nama: string, harga: number, detail: string) => {
+const DetailProduk = () => {
+
+    const params = useParams()
 
     // const handleParamsProduct = () => {
     //     params.get("")
@@ -13,11 +15,11 @@ const DetailProduk = (nama: string, harga: number, detail: string) => {
 
     return (
         <div>
-            <h1>Detail Produk</h1>
+            <h1>Detail Produk {params.namaProduk}</h1>
 
-            <p>Nama Produk : </p>
-            <p>Harga produk : </p>
-            <p>Detail Produk : </p>
+            <p>Nama Produk :  {params.namaProduk} </p>
+            <p>Harga produk : Rp. {params.hargaProduk} </p>
+            <p>Detail Produk :  {params.detailProduk}</p>
         </div>
     )
 } 
