@@ -6,6 +6,7 @@ import Terms from './page/terms'
 import ProductList from './page/ProductList'
 import DetailProduct from './page/DetailProduct'
 import FormInput from './page/FormInput'
+import RFHpage from './page/RFHpage'
 
 const AppInstagram = () => {
     return (
@@ -17,6 +18,7 @@ const AppInstagram = () => {
                 <Route path="/terms/:terms1" element={<Terms />} />
                 <Route path="/FormInput" element={<FormInput />} />
                 <Route path="*" element={<NotFound />}/>
+                <Route path="/rfh" element={<RFHpage />}/>
                 
            </Routes>
         </div>
