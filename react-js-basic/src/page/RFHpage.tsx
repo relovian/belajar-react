@@ -1,4 +1,5 @@
-import { useForm} from 'react-hook-form'   
+import { useForm } from 'react-hook-form'   
+import type { SubmitHandler } from 'react-hook-form'   
 import {z} from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -13,11 +14,12 @@ const formLoginSchema = z.object({
     umur: z.coerce.number().min(18, "umur minimal 18 tahun"),
 })
 
-type FormLoginSchema = z.input<typeof formLoginSchema >;
+type FormLoginInput = z.input<typeof formLoginSchema>;
+type FormLoginOutput = z.infer<typeof formLoginSchema>;
 
 const RFHpage = () => {
 
-    const form = useForm<FormLoginSchema>({
+    const form = useForm<FormLoginInput>({
         resolver: zodResolver(formLoginSchema),
 
         defaultValues: {
@@ -27,13 +29,13 @@ const RFHpage = () => {
         },
     });
 
-    const handleFormLogin = (values: FormLoginSchema) => { 
-        console.log(values.umur)
-        alert("submit success") 
-    }
+    const handleFormLogin: SubmitHandler<FormLoginOutput> = (values) => {
+        console.log(values.umur);
+    };
+
     return (
         <div>
-            <form onSubmit={form.handleSubmit(handleFormLogin)}>
+          <form onSubmit={form.handleSubmit((data) => handleFormLogin(data as FormLoginOutput))}>
                 <h1>react form hook</h1>
 
                 <label>
