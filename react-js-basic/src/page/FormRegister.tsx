@@ -8,9 +8,13 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 const regisFormSchema = z.object({
     username: z.string().min(3, "username minimal 3 karakter"),
-    email: z.string().min(8).email("format email tidak valid"),
+    email: z.string().email( {message : "format email tidak valid"}),
     password: z.string().min(8, "password harus minimal 8 karakter").regex(/[A-Z]/, "password harus mengandung huruf kapital").regex(/[0-9]/, "password harus mengandung angka"),
     umur: z.coerce.number().min(18, "umur harus diatas 18 tahun"),
+    confirmPassword: z.string().min(8, "password harus minimal 8 karakter").regex(/[A-Z]/, "password harus mengandung huruf kapital").regex(/[0-9]/, "password harus mengandung angka"),
+}). refine ((data) => data.password === data.confirmPassword, { 
+    path: [ 'confirmPassword' ],     
+    message: 'Kata sandi tidak cocok'   
 })
 
 type RegisFormSchemaInput = z.input< typeof regisFormSchema>
@@ -101,6 +105,11 @@ const FormRegister = () => {
                     <input type="password" id="password" {...form.register("password")}  /><br />
     
                     <p style={{color: "red"}}>{form.formState.errors.password?.message}</p>
+
+                    <label htmlFor="confirmPassword">confirm password</label><br />
+                    <input type="password" id="confirmPaassword" {...form.register("confirmPassword")}  /><br />
+
+                    <p style={{color: "red"}}>{form.formState.errors.confirmPassword?.message}</p>
     
                     <label htmlFor="umur">umur</label><br />
                     <input type="number" id="umur"{...form.register("umur")}  /><br />

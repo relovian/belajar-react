@@ -8,6 +8,7 @@ import DetailProduct from './page/DetailProduct'
 import FormInput from './page/FormInput'
 import RFHpage from './page/RFHpage'
 import FormRegister from './page/FormRegister'
+import EmployeesPage from './page/EmployeesPage'
 
 const AppInstagram = () => {
     return (
@@ -21,6 +22,7 @@ const AppInstagram = () => {
                 <Route path="*" element={<NotFound />}/>
                 <Route path="/rfh" element={<RFHpage />}/>
                 <Route path="/RegisterForm" element={<FormRegister />}/>
+                <Route path="/Employees" element={<EmployeesPage />}/>
 
                 
            </Routes>
